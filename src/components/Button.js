@@ -4,7 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class Button extends React.Component {
   render() {
-    return <button onClick={this.props.onClick}>{this.props.children}</button>;
+    return (
+      <button
+        className="btn btn-primary me-4 ms-4"
+        onClick={this.props.onClick}
+      >
+        {this.props.children}
+      </button>
+    );
   }
 }
 

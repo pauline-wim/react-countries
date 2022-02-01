@@ -1,6 +1,7 @@
 import React from "react";
 // Components
 import Button from "./components/Button";
+import Card from "./components/Card";
 // CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,6 +10,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      display: "d-none",
       country: [],
       name: "",
       capital: "",
@@ -48,12 +50,13 @@ class App extends React.Component {
           return this.setState({
             name: elem.name,
             capital: elem.capital,
-            flag: elem.flag,
+            flag: elem.flags.png,
             population: elem.population,
             region: elem.region,
           });
         });
       });
+    this.setState({ display: "d-flex" });
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -63,18 +66,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <section>
-        <h1>Country selector</h1>
-        <Button onClick={() => this.getCountry("france")}>France</Button>
-        <Button onClick={() => this.getCountry("brazil")}>Brazil</Button>
-        <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
+      <section className="p-4 d-flex flex-column justify-content-center align-items-center">
+        <h1 className="pb-4">Country selector</h1>
         <div>
-          <p>Name: {this.state.name}</p>
-          <p>Capital: {this.state.capital}</p>
-          <p>Flag: {this.state.flag}</p>
-          <p>Population: {this.state.population}</p>
-          <p>Region: {this.state.region}</p>
+          <Button onClick={() => this.getCountry("france")}>France</Button>
+          <Button onClick={() => this.getCountry("brazil")}>Brazil</Button>
+          <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
         </div>
+        <article className="w-50">
+          <Card
+            display={this.state.display}
+            name={this.state.name}
+            capital={this.state.capital}
+            flag={this.state.flag}
+            population={this.state.population}
+            region={this.state.region}
+          />
+        </article>
       </section>
     );
   }

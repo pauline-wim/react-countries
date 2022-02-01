@@ -65,9 +65,9 @@ class App extends React.Component {
     return (
       <section>
         <h1>Country selector</h1>
-        <Button onClick={this.getCountry("france")}>France</Button>
-        {/* <Button onClick={this.getCountry("brazil")}>Brazil</Button> */}
-        {/* <Button onClick={this.getCountry("croatia")}>Croatia</Button> */}
+        <Button onClick={() => this.getCountry("france")}>France</Button>
+        <Button onClick={() => this.getCountry("brazil")}>Brazil</Button>
+        <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
         <div>
           <p>Name: {this.state.name}</p>
           <p>Capital: {this.state.capital}</p>
